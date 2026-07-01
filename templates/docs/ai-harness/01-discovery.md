@@ -1,225 +1,231 @@
-# Discovery
+# AI Migration Harness
 
-## Status
+# Discovery Prompt
 
-☐ Not Started
+## Purpose
 
-☐ In Progress
+You are participating in a professional migration of a legacy business application.
 
-☐ Completed
+Your responsibility is to perform the Discovery phase.
 
-**Owner**
+The objective is to understand the existing system before any migration work begins.
 
-- **Last Updated**
+Accuracy is more important than completeness.
 
-- **Reviewed**
-
-- **Confidence**
-
-High / Medium / Low
+Never invent information.
 
 ---
 
-## Objective
+## Role
 
-Understand the existing application before making any architectural or implementation decisions.
+Act as a Senior Software Architect specialized in:
 
-No code should be migrated during this phase.
+- Legacy systems
+- Reverse engineering
+- Business applications
+- Software migrations
 
----
+You are not implementing software.
 
-# Project Overview
-
-## Project Name
-
--
-
-## Repository
-
--
-
-## Source Technology
-
--
-
-## Target Technology
-
--
-
-## Main Objective
-
-- ***
-
-# High-Level Architecture
-
-## What does the application do?
-
--
-
-## Main modules
-
-| Module | Responsibility | Status |
-| ------ | -------------- | ------ |
-|        |                |        |
+You are producing engineering knowledge.
 
 ---
 
-# Technology Inventory
+## Context
 
-| Area         | Technology | Notes |
-| ------------ | ---------- | ----- |
-| Language     |            |       |
-| UI           |            |       |
-| Persistence  |            |       |
-| Networking   |            |       |
-| Dependencies |            |       |
-| Build        |            |       |
-| Tests        |            |       |
+This project is being migrated to a different technology stack.
+
+The migration strategy depends entirely on the quality of the Discovery phase.
+
+Your job is to understand the existing application, not to redesign it.
 
 ---
 
-# External Systems
+## Input
 
-| System | Purpose | Protocol |
-| ------ | ------- | -------- |
-|        |         |          |
+Use the repository as the single source of truth.
 
----
+You may inspect:
 
-# Data Sources
+- source code
+- documentation
+- project structure
+- configuration
+- resources
+- build scripts
+- tests
 
-| Source | Description | Critical |
-| ------ | ----------- | -------- |
-|        |             |          |
+Never infer facts that cannot be demonstrated.
 
----
-
-# Persistence
-
-## Current persistence technology
-
--
-
-## Main entities
-
-| Entity | Purpose |
-| ------ | ------- |
-|        |         |
+Whenever evidence is insufficient, explicitly state it.
 
 ---
 
-# Application Flow
+## Deliverable
 
-Describe the complete execution flow from startup to persistence.
+Complete the following document:
 
-```
-Application Start
+`docs/ai-harness/01-discovery.md`
 
-↓
+Return the result in **Markdown**, preserving **exactly** the structure of the target document.
 
-Configuration
+Do not create additional sections.
 
-↓
+Do not remove existing sections.
 
-Data Acquisition
-
-↓
-
-Normalization
-
-↓
-
-Business Rules
-
-↓
-
-Persistence
-
-↓
-
-Consumption
-```
-
-Notes
-
-- ***
-
-# Business Rules Identified
-
-| Rule | Source | Validated |
-| ---- | ------ | --------- |
-|      |        |           |
+Populate every section where repository evidence exists.
 
 ---
 
-# Risks
+## Tasks
 
-| Risk | Impact | Notes |
-| ---- | ------ | ----- |
-|      |        |       |
+Perform the following analysis.
 
----
+### 1. Application Overview
 
-# Unknowns
+Identify:
 
-List every important question that still needs investigation.
-
-- [ ]
-
-- [ ]
-
-- [ ]
+- purpose
+- business objective
+- primary users
 
 ---
 
-# Discovery Deliverables Checklist
+### 2. Architecture
+
+Document:
+
+- major modules
+- responsibilities
+- dependencies
+- communication between modules
+
+---
+
+### 3. Technology Inventory
+
+Identify:
+
+- languages
+- frameworks
+- persistence
+- networking
+- UI
+- build system
+- testing
+- third-party libraries
+
+---
+
+### 4. External Systems
+
+Identify every external dependency.
+
+Examples:
+
+- APIs
+- databases
+- files
+- cloud services
+- authentication
+- integrations
+
+---
+
+### 5. Data Sources
+
+Document:
+
+- where data originates
+- how it enters the system
+- how it is consumed
+
+---
+
+### 6. Persistence
+
+Describe the persistence approach.
+
+Do not analyse Realm objects in detail.
+
+That belongs to the Realm Analysis phase.
+
+---
+
+### 7. Application Flow
+
+Describe the complete execution flow from application startup to data consumption.
+
+---
+
+### 8. Business Capabilities
+
+Identify the major business capabilities.
+
+Avoid implementation details.
+
+---
+
+### 9. Technical Risks
+
+Identify migration risks.
+
+Examples:
+
+- obsolete libraries
+- hidden dependencies
+- duplicated logic
+- tight coupling
+
+---
+
+### 10. Unknowns
+
+Document every unanswered question.
+
+Never guess.
+
+---
+
+## Rules
+
+- Repository evidence always has priority.
+- Clearly distinguish facts from assumptions.
+- Reference files or modules whenever possible.
+- Do not redesign the application.
+- Do not propose .NET architecture.
+- Do not propose SQL design.
+- Do not refactor.
+- Do not optimise.
+- Do not estimate effort.
+
+---
+
+## Completion Criteria
+
+The Discovery phase is complete only if:
 
 - [ ] Application purpose understood
-
-- [ ] Main architecture identified
-
-- [ ] Technologies identified
-
+- [ ] Architecture documented
+- [ ] Technology stack documented
 - [ ] External systems identified
-
 - [ ] Data sources identified
-
-- [ ] Persistence analysed
-
-- [ ] Main entities identified
-
-- [ ] Main data flow documented
-
-- [ ] Business rules collected
-
-- [ ] Major risks identified
-
+- [ ] Persistence understood
+- [ ] Application flow documented
+- [ ] Business capabilities identified
+- [ ] Risks documented
 - [ ] Unknowns documented
 
 ---
 
-# AI Usage
+## Self Review
 
-## AI assistants used
+Before returning the report verify:
 
-- [ ] ChatGPT
-- [ ] Codex
-- [ ] Copilot
-
-## AI contribution
-
-Summary
-
--
-
-Human validation performed
-
--
-
-Corrections required
-
--
-
-Confidence in Discovery
-
-High / Medium / Low
+- [ ] Every conclusion is supported by repository evidence or explicitly marked as an assumption.
+- [ ] Facts and assumptions are clearly separated.
+- [ ] No migration decisions have been proposed.
+- [ ] No implementation recommendations have been included.
+- [ ] No target architecture has been described.
+- [ ] Every important unknown has been documented.
+- [ ] The output matches exactly the structure of `docs/ai-harness/01-discovery.md`.

@@ -1,120 +1,286 @@
+# AI Migration Harness
+
 # Discovery Prompt
 
-## Objective
+## Purpose
 
-Analyze the project before making any code changes.
+You are participating in a professional migration of a legacy business application.
 
-The goal is to understand the current system, identify risks, and produce enough knowledge to plan the migration.
+Your responsibility is to perform the **Discovery phase**.
 
-Do **not** modify any code during this phase.
+The objective is **to understand the existing system**, not to redesign it.
 
----
+This is the most important phase of the migration. Every conclusion produced here will influence the architecture, migration strategy and validation process.
 
-## Instructions
+Accuracy is more important than completeness.
 
-Analyze the complete repository and produce a structured engineering report.
-
-Focus on understanding the existing system rather than proposing improvements.
-
-For every conclusion:
-
-- indicate the evidence supporting it;
-- distinguish facts from assumptions;
-- identify uncertainties.
-
-Do not invent missing information.
-
-If something cannot be determined from the repository, explicitly state it.
+If something cannot be proven from the repository, explicitly state that it is unknown.
 
 ---
 
-## Produce the following sections
+# Your Role
 
-### 1. Executive Summary
+Act as a senior software architect with experience in:
 
-Explain in a few paragraphs:
+- reverse engineering
+- legacy systems
+- business applications
+- software migrations
+- architecture analysis
 
-- what the application does;
-- its main responsibilities;
-- the overall architecture.
+You are **not** acting as an implementation assistant.
+
+Do not generate production code.
+
+Do not redesign the application.
+
+Do not optimize anything.
 
 ---
 
-### 2. Technology Stack
+# Context
+
+The target application will be migrated to a different technology stack.
+
+At this stage the target technology is irrelevant.
+
+Your only goal is understanding the current system.
+
+The migration will only be successful if the existing business behaviour is fully understood.
+
+---
+
+# Input
+
+Use the repository as the single source of truth.
+
+You may inspect:
+
+- source code
+- configuration
+- documentation
+- project structure
+- build files
+- tests
+- resources
+
+Never invent missing information.
+
+When evidence is insufficient, clearly state it.
+
+---
+
+# Deliverable
+
+Produce a complete Discovery report using the following template:
+
+```
+docs/ai-harness/01-discovery.md
+```
+
+Return the report in Markdown while preserving exactly the template structure.
+
+Complete every section whenever evidence exists.
+
+Leave sections empty only when evidence cannot be found.
+
+---
+
+# Discovery Tasks
+
+Perform the following activities.
+
+## 1. Understand the application
 
 Identify:
 
-- languages;
-- frameworks;
-- persistence technologies;
-- external dependencies;
-- build system;
-- testing framework;
-- deployment-related components.
+- application purpose
+- primary users
+- business objective
 
 ---
 
-### 3. Project Structure
+## 2. Identify the architecture
 
-Describe the major modules and their responsibilities.
+Document:
 
----
-
-### 4. Data Flow
-
-Explain:
-
-- where data comes from;
-- how it is transformed;
-- where it is stored;
-- how it is consumed.
+- major modules
+- responsibilities
+- dependencies
+- communication between modules
 
 ---
 
-### 5. Domain Model
+## 3. Inventory the technology stack
 
-Identify the main business entities and their relationships.
+Identify:
 
----
-
-### 6. External Integrations
-
-List all external systems, APIs, databases or services.
-
----
-
-### 7. Risks
-
-Identify technical risks such as:
-
-- obsolete dependencies;
-- tightly coupled components;
-- missing tests;
-- unclear behaviour;
-- hidden assumptions.
+- programming language
+- frameworks
+- persistence technologies
+- networking
+- UI technologies
+- build system
+- testing framework
+- third-party libraries
 
 ---
 
-### 8. Migration Considerations
+## 4. Identify external dependencies
 
-Identify what should be preserved during migration.
+Document every external dependency.
 
-Highlight components that may require redesign.
+Examples:
 
-Do not redesign them yet.
+- APIs
+- databases
+- files
+- cloud services
+- messaging
+- authentication
+- integrations
 
 ---
 
-### 9. Questions
+## 5. Identify data sources
 
-List every important question that cannot be answered from the repository.
+Describe:
+
+- where data originates
+- how it enters the application
+- how frequently it changes
 
 ---
 
-## Expected Output
+## 6. Understand persistence
 
-Produce a concise engineering report suitable for software architects.
+Identify:
 
-Avoid unnecessary detail.
+- persistence technology
+- persistence responsibilities
 
-Prioritize clarity, evidence and traceability.
+Do not analyse the persistence model in detail.
+
+That belongs to the Realm Analysis phase.
+
+---
+
+## 7. Describe the execution flow
+
+Explain the application lifecycle.
+
+From startup until business execution.
+
+Describe:
+
+- initialization
+- configuration
+- processing
+- persistence
+- outputs
+
+---
+
+## 8. Identify business capabilities
+
+Describe the major business capabilities.
+
+Avoid implementation details.
+
+Think in terms of business behaviour.
+
+---
+
+## 9. Identify technical risks
+
+List every migration risk discovered.
+
+Examples:
+
+- obsolete libraries
+- hidden dependencies
+- duplicated logic
+- tight coupling
+- unclear ownership
+
+---
+
+## 10. List unknowns
+
+Every uncertainty must be documented.
+
+Do not attempt to guess.
+
+---
+
+# Evidence Rules
+
+Every important conclusion should be supported by repository evidence whenever possible.
+
+Whenever applicable include:
+
+- file names
+- folders
+- classes
+- modules
+
+Never fabricate references.
+
+---
+
+# Constraints
+
+Do NOT:
+
+- redesign the system
+- migrate code
+- propose SQL schemas
+- propose .NET architecture
+- optimise code
+- refactor
+- estimate effort
+
+This phase is about understanding only.
+
+---
+
+# Expected Quality
+
+The Discovery report should allow another senior engineer to understand:
+
+- what the system does
+- how it is organised
+- where the main risks are
+
+without needing to repeat the Discovery phase.
+
+---
+
+# Completion Criteria
+
+The Discovery phase is complete only when:
+
+- application purpose is understood
+- architecture is documented
+- technology stack is documented
+- external systems are identified
+- data sources are identified
+- persistence approach is understood
+- execution flow is documented
+- business capabilities are listed
+- technical risks are documented
+- unknowns are explicitly listed
+
+---
+
+# Self Review
+
+Before finishing, verify:
+
+- [ ] Every conclusion is supported by repository evidence or explicitly marked as an assumption.
+- [ ] Facts and assumptions are clearly separated.
+- [ ] No migration decisions have been proposed.
+- [ ] No implementation recommendations have been included.
+- [ ] No target architecture has been described.
+- [ ] Every important unknown has been documented.
+- [ ] The output follows exactly the structure of `docs/ai-harness/01-discovery.md`.

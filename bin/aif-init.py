@@ -16,6 +16,15 @@ def copy_file(source: Path, target: Path) -> None:
     print(f"✔ {target}")
 
 
+def copy_dir(source: Path, target: Path) -> None:
+    if target.exists():
+        print(f"• Skipped existing folder: {target}")
+        return
+
+    shutil.copytree(source, target)
+    print(f"✔ {target}")
+
+
 def main() -> None:
     framework_root = Path(__file__).resolve().parents[1]
     target_root = Path.cwd()
@@ -26,45 +35,25 @@ def main() -> None:
     if not templates.exists():
         fail("templates folder not found")
 
-    files = [
-        (templates / "AGENTS.md", target_root / "AGENTS.md"),
-        (
-            templates / ".github" / "copilot-instructions.md",
-            target_root / ".github" / "copilot-instructions.md",
-        ),
-        (
-            templates / "prompts" / "discovery.md",
-            target_root / "docs" / "ai" / "prompts" / "discovery.md",
-        ),
-        (
-            scripts / "aif-finish",
-            target_root / "scripts" / "aif-finish",
-        ),
-    ]
-
     print()
-    print("AI Engineering Framework Init")
-    print("-----------------------------")
+    print("AI Migration Harness Init")
+    print("-------------------------")
     print()
 
-    for source, target in files:
-        if not source.exists():
-            fail(f"missing source file: {source}")
-
-        if target.exists():
-            print(f"• Skipped existing file: {target}")
-            continue
-
-        copy_file(source, target)
+    copy_file(templates / "AGENTS.md", target_root / "AGENTS.md")
+    copy_dir(templates / ".github", target_root / ".github")
+    copy_dir(templates / "docs" / "ai-harness", target_root / "docs" / "ai-harness")
+    copy_dir(templates / "prompts", target_root / "prompts")
+    copy_file(scripts / "aif-finish", target_root / "scripts" / "aif-finish")
 
     print()
-    print("Framework installed.")
+    print("Harness installed.")
     print()
     print("Next step:")
-    print("1. Open docs/ai/prompts/discovery.md")
-    print("2. Use it with Codex to start project discovery")
+    print("1. Open docs/ai-harness/README.md")
+    print("2. Start with prompts/discovery.md")
     print()
-
+    
 
 if __name__ == "__main__":
     main()
